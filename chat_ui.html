@@ -1,0 +1,143 @@
+<!-- Chat Interface HTML -->
+<h1> Chat with Contrarian! </h1>
+<div id="chat-interface">
+  <div id="chat-display" class="chat-box"></div>
+  <div class="input-container">
+    <input type="text" id="chat-input" class="message-input" placeholder="Type your message here">
+    <button onclick="sendMessage()" class="send-button">Send</button>
+  </div>
+</div>
+<style>
+#chat-interface {
+    font-family: Arial, sans-serif;
+    max-width: 500px;
+    margin: auto;
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    padding: 10px;
+    box-shadow: 0 0 10px rgba(0,0,0,0.1);
+}
+
+#chat-display {
+    height: 300px;
+    overflow-y: auto;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    padding: 10px;
+    margin-bottom: 10px;
+    background-color: #f9f9f9;
+}
+
+#chat-display p {
+    margin: 5px;
+    padding: 10px;
+    border-radius: 15px;
+    background-color: #e0e0e0;
+    max-width: 70%;
+}
+
+#chat-input {
+    width: 70%;
+    padding: 10px;
+    border-radius: 8px;
+    border: 1px solid #ddd;
+    margin-right: 10px;
+}
+
+button {
+    padding: 10px 20px;
+    border-radius: 8px;
+    border: none;
+    background-color: #007bff;
+    color: white;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #0056b3;
+}
+
+#chat-interface #chat-display .message-container {
+    width: 100%;
+    display: flex;
+    padding: 2px 0;
+}
+
+#chat-interface #chat-display .message-container.message-user {
+    justify-content: flex-end;
+}
+
+#chat-interface #chat-display .message-container .message-user, 
+#chat-interface #chat-display .message-container .message-gpt {
+    padding: 5px 10px;
+    border-radius: 15px;
+    max-width: 70%;
+    word-wrap: break-word;
+}
+
+#chat-interface #chat-display .message-container .message-user {
+    background-color: red;
+    color: white;
+    margin-left: auto;
+}
+
+#chat-interface #chat-display .message-container .message-gpt {
+    background-color: blue;
+    color: white;
+    margin-right: auto;
+}
+
+
+
+</style>
+<script>
+
+document.getElementById('chat-input').addEventListener('keydown', function(event) {
+    if (event.key === 'Enter') {
+        event.preventDefault(); // Prevent default Enter key behavior
+        sendMessage();
+    }
+});
+    function sendMessage() {
+        var inputField = document.getElementById('chat-input');
+        var message = inputField.value;
+        inputField.value = ''; // Clear the input field
+
+        updateChatDisplay('You: ' + message, true); // Show user's message
+
+        // Send the message to your server
+        fetch('https://flask-server-virid.vercel.app/chat', {  // Replace with your Lightsail IP and route
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({ message: message }),
+        })
+        .then(response => response.json())
+        .then(data => {
+            updateChatDisplay('ChatGPT: ' + data.response, false);
+        })
+        .catch(error => {
+            console.error('Error:', error);
+        });
+    }
+
+function updateChatDisplay(message, isUserMessage) {
+    var chatDisplay = document.getElementById('chat-display');
+    var messageContainer = document.createElement('div');
+    messageContainer.className = 'message-container';
+    var messageElement = document.createElement('p');
+    messageElement.textContent = message;
+
+    if (isUserMessage) {
+        messageElement.className = 'message-user';
+    } else {
+        messageElement.className = 'message-gpt';
+    }
+  
+    messageContainer.appendChild(messageElement);
+    chatDisplay.appendChild(messageContainer);
+    chatDisplay.scrollTop = chatDisplay.scrollHeight;
+}
+
+</script>
