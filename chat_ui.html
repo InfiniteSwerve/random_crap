@@ -12,7 +12,7 @@
 #chat-interface {
     font-family: 'Nunito', sans-serif;
     max-width: 700px;
-    height: 80vh;
+    height: 60vh; /* Reduced from 80vh to 60vh */
     margin: 50px auto;
     border: 3px solid #ced4da;
     border-radius: 20px;
@@ -21,8 +21,9 @@
     background-color: #f8f9fa;
     display: flex;
     flex-direction: column;
+    overflow: hidden; /* Add this to hide overflow */
 }
-
+  
 #chat-display {
     flex-grow: 1;
     overflow-y: auto;
