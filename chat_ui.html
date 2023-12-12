@@ -1,5 +1,5 @@
 <!-- Chat Interface HTML -->
-<h1>Chat 5!</h1>
+<h1>Chat 6!</h1>
 <div id="chat-interface">
   <div id="chat-display" class="chat-box"></div>
   <div class="input-container">
@@ -16,7 +16,7 @@
     margin: 50px auto;
     border: 3px solid #ced4da;
     border-radius: 20px;
-    padding: 30px;
+    padding: 20px;
     box-shadow: 0 6px 20px rgba(0,0,0,0.15);
     background-color: #f8f9fa;
     display: flex;
@@ -28,11 +28,9 @@
     overflow-y: auto;
     border: 3px solid #dee2e6;
     border-radius: 15px;
-    padding: 25px;
-    margin-bottom: 25px;
+    padding: 20px;
+    margin-bottom: 20px;
     background-color: #e9ecef;
-    display: flex;
-    flex-direction: column-reverse;
 }
 
 #chat-display p {
@@ -46,18 +44,23 @@
     line-height: 1.7;
 }
 
+.input-container {
+    display: flex;
+    justify-content: space-between;
+}
+
 #chat-input {
-    width: calc(100% - 140px);
+    flex-grow: 1;
     padding: 15px 20px;
     border-radius: 15px;
     border: 3px solid #ced4da;
     font-family: 'Source Code Pro', monospace;
     font-size: 1.2rem;
+    margin-right: 15px;
     outline: none;
 }
 
 button {
-    width: 130px;
     padding: 15px 20px;
     border-radius: 15px;
     border: none;
@@ -76,48 +79,15 @@ button:hover, button:focus {
     outline: none;
 }
 
-#chat-interface #chat-display .message-container {
-    display: flex;
-    margin: 10px 0;
-}
-
-#chat-interface #chat-display .message-container.message-user {
-    justify-content: flex-end;
-}
-
-#chat-interface #chat-display .message-container .message-user, 
-#chat-interface #chat-display .message-container .message-gpt {
-    padding: 15px 20px;
-    border-radius: 25px;
-    max-width: 75%;
-}
-
-#chat-interface #chat-display .message-container .message-user {
-    background-color: #ffc107;
-    color: black;
-    margin-left: auto;
-    box-shadow: 0 2px 4px rgba(0,0,0,0.2);
-}
-
-#chat-interface #chat-display .message-container .message-gpt {
-    background-color: #007bff;
-    color: white;
-    margin-right: auto;
-    box-shadow: 0 2px 4px rgba(0,0,0,0.2);
-}
-
 @media screen and (max-width: 700px) {
     #chat-interface {
         width: 96vw;
         height: 90vh;
     }
-
-    #chat-input {
-        width: calc(100% - 150px);
-    }
 }
 
 </style>
+
 
 <script>
 
