@@ -1,5 +1,5 @@
 <!-- Chat Interface HTML -->
-<h1> Chat 3! </h1>
+<h1>Chat 4!</h1>
 <div id="chat-interface">
   <div id="chat-display" class="chat-box"></div>
   <div class="input-container">
@@ -7,69 +7,72 @@
     <button onclick="sendMessage()" class="send-button">Send</button>
   </div>
 </div>
-<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&family=Roboto+Mono:wght@400;700&display=swap" rel="stylesheet">
 <style>
 #chat-interface {
-    font-family: 'Roboto', sans-serif;
-    max-width: 600px;
-    height: 70vh;
-    margin: 30px auto;
-    border: 2px solid #ced4da;
-    border-radius: 12px;
-    padding: 20px;
-    box-shadow: 0 4px 8px rgba(0,0,0,0.05);
-    background-color: #ffffff;
-}
-
-#chat-display {
-    height: 80%;
-    overflow-y: auto;
-    border: 2px solid #e9ecef;
-    border-radius: 10px;
-    padding: 15px;
-    margin-bottom: 20px;
+    font-family: 'Poppins', sans-serif;
+    max-width: 650px;
+    height: 75vh;
+    margin: 40px auto;
+    border: 2px solid #dee2e6;
+    border-radius: 15px;
+    padding: 25px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
     background-color: #f8f9fa;
 }
 
+#chat-display {
+    height: 85%;
+    overflow-y: auto;
+    border: 2px solid #adb5bd;
+    border-radius: 12px;
+    padding: 20px;
+    background-color: #e9ecef;
+}
+
 #chat-display p {
-    margin: 10px 0;
-    padding: 10px 15px;
-    border-radius: 20px;
-    background-color: #e2e3e5;
+    margin: 12px 0;
+    padding: 12px 16px;
+    border-radius: 22px;
+    background-color: #ced4da;
     word-wrap: break-word;
-    font-size: 1rem;
-    line-height: 1.5;
+    font-family: 'Roboto Mono', monospace;
+    font-size: 1.1rem;
+    line-height: 1.6;
 }
 
 #chat-input {
-    width: calc(100% - 110px);
-    padding: 12px 15px;
-    border-radius: 10px;
+    width: calc(100% - 120px);
+    padding: 14px 18px;
+    border-radius: 12px;
     border: 2px solid #ced4da;
-    font-size: 1rem;
-    margin-right: 10px;
+    font-family: 'Roboto Mono', monospace;
+    font-size: 1.1rem;
+    margin-right: 15px;
 }
 
 button {
-    width: 100px;
-    padding: 12px 15px;
-    border-radius: 10px;
+    width: 110px;
+    padding: 14px 18px;
+    border-radius: 12px;
     border: none;
     background-color: #28a745;
     color: white;
-    font-size: 1rem;
+    font-family: 'Poppins', sans-serif;
+    font-size: 1.1rem;
     cursor: pointer;
-    transition: background-color 0.2s ease;
+    transition: background-color 0.25s ease, transform 0.2s ease;
 }
 
 button:hover, button:focus {
     background-color: #218838;
+    transform: translateY(-2px);
     outline: none;
 }
 
 #chat-interface #chat-display .message-container {
     display: flex;
-    margin: 6px 0;
+    margin: 8px 0;
 }
 
 #chat-interface #chat-display .message-container.message-user {
@@ -78,31 +81,31 @@ button:hover, button:focus {
 
 #chat-interface #chat-display .message-container .message-user, 
 #chat-interface #chat-display .message-container .message-gpt {
-    padding: 10px 15px;
-    border-radius: 20px;
+    padding: 12px 16px;
+    border-radius: 22px;
     max-width: 70%;
 }
 
 #chat-interface #chat-display .message-container .message-user {
-    background-color: #ffc107;
+    background-color: #ffeb3b;
     color: black;
     margin-left: auto;
 }
 
 #chat-interface #chat-display .message-container .message-gpt {
-    background-color: #17a2b8;
+    background-color: #007bff;
     color: white;
     margin-right: auto;
 }
 
-@media screen and (max-width: 600px) {
+@media screen and (max-width: 650px) {
     #chat-interface {
         width: 95vw;
-        height: 80vh;
+        height: 85vh;
     }
 
     #chat-input {
-        width: calc(100% - 120px);
+        width: calc(100% - 130px);
     }
 }
 
